@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kiddotronic KI Printer – WLAN-Anleitung</title>
+  <style>
+    /* PIXEL STIL -------------------------------------------------------- */
+    @import url('[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap)');
+    body {
+      font-family: 'Press Start 2P', cursive;
+      background-color: #c6e4f0;
+      margin: 0; padding: 0;
+      color: #222;
+      text-align: center;
+    }
+    header {
+      background-color: #5da8c1;
+      color: #fff;
+      padding: 1em;
+      border-bottom: 4px solid #222;
+    }
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2em;
+      background: #fefefe;
+      box-shadow: 0 0 0 4px #222;
+    }
+    select, input, button {
+      font-family: 'Press Start 2P', cursive;
+      padding: 0.5em;
+      margin-top: 1em;
+      border: 2px solid #222;
+      background: #e0f7ff;
+      width: 80%;
+      max-width: 400px;
+    }
+    button {
+      cursor: pointer;
+      background-color: #8fd96f;
+      color: #000;
+    }
+    .anleitung {
+      display: none;
+      margin-top: 2em;
+      text-align: left;
+      border-top: 2px solid #000;
+      padding-top: 1em;
+    }
+    ol { font-size: 12px; line-height: 1.8; }
+    li { margin: 0.5em 0; }
+    h2 { font-size: 12px; }
+    .hinweis {
+      margin-top: 2em;
+      background: #fff3cd;
+      border: 2px solid #222;
+      padding: 1em;
+      font-size: 10px;
+    }
+    footer {
+      background: #5da8c1;
+      color: #fff;
+      padding: 1em;
+      margin-top: 3em;
+      font-size: 10px;
+      border-top: 4px solid #222;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Kiddotronic KI Mini Printer</h1>
+    <p>2,4 GHz WLAN Konfigurationshilfe</p>
+  </header>
+
+  <main>
+    <p>Bitte wähle deinen Router-Hersteller und gib den Router-Code ein.</p>
+
+    <select id="router">
+      <option value="">– Router auswählen –</option>
+      <option value="fritz">AVM FRITZ!Box</option>
+      <option value="speedport">Telekom Speedport</option>
+      <option value="vodafone">Vodafone Station</option>
+      <option value="tplink">TP-Link</option>
+      <option value="netgear">Netgear</option>
+      <option value="asus">ASUS</option>
+      <option value="huawei">Huawei / Honor</option>
+      <option value="o2">O₂ HomeBox</option>
+      <option value="dlink">D-Link</option>
+      <option value="zte">ZTE Router</option>
+      <option value="andere">Andere / Manuell</option>
+    </select><br>
+
+    <input type="text" id="code" placeholder="Routercode (z. B. ABC12345)" /><br>
+    <button id="weiter">WEITER ➤</button>
+
+    <div id="anleitung" class="anleitung"></div>
+
+    <div class="hinweis">
+      <h3>♻ Entsorgung nach deutschem Batteriegesetz (BattG)</h3>
+      <p>
+        Batterien und Akkus dürfen nicht im Hausmüll entsorgt werden.  
+        Als Verbraucher bist du gesetzlich verpflichtet, gebrauchte Batterien an entsprechenden Sammelstellen zurückzugeben.  
+        Rückgabestellen findest du z. B. im Handel oder bei kommunalen Sammelstellen.
+      </p>
+      <p>
+        Das Symbol der durchgestrichenen Mülltonne bedeutet:  
+        Batterien und Elektrogeräte gehören nicht in den Hausmüll.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    © 2024 Sema Solutions – semasolutions@hotmail.com
+  </footer>
+
+  <script>
+    const routerTexte = {
+      fritz: `
+        <h2>FRITZ!Box</h2>
+        <ol>
+          <li>Öffne deinen Browser und gib <b>fritz.box</b> ein.</li>
+          <li>Melde dich mit dem Gerätepasswort an (steht auf der Unterseite).</li>
+          <li>Wähle: WLAN → Funknetz.</li>
+          <li>Deaktiviere „5 GHz“ oder aktiviere nur „2,4 GHz“.</li>
+          <li>Speichern → Drucker in App verbinden.</li>
+        </ol>
+      `,
+      speedport: `
+        <h2>Telekom Speedport</h2>
+        <ol>
+          <li>Browser öffnen → <b>speedport.ip</b> eingeben.</li>
+          <li>Mit Gerätepasswort (Router-Rückseite) anmelden.</li>
+          <li>Menü WLAN → Frequenzband-Einstellungen.</li>
+          <li>5 GHz abschalten oder getrennte WLAN-Namen anlegen.</li>
+          <li>Speichern und erneut versuchen, den Drucker zu verbinden.</li>
+        </ol>
+      `,
+      vodafone: `
+        <h2>Vodafone Station</h2>
+        <ol>
+          <li>Browser → <b>192.168.0.1</b>.</li>
+          <li>Passwort = „admin“ oder auf Rückseite.</li>
+          <li>Menü: WLAN → Erweitert → Frequenzbänder.</li>
+          <li>Schalte 5 GHz aus oder verwende nur 2,4 GHz.</li>
+        </ol>
+      `,
+      tplink: `
+        <h2>TP-Link</h2>
+        <ol>
+          <li>Browser → <b>192.168.0.1</b> oder <b>tplinkwifi.net</b>.</li>
+          <li>Anmelden → Wireless → Basic Settings.</li>
+          <li>Nur 2.4 GHz aktivieren → Save.</li>
+        </ol>
+      `,
+      netgear: `
+        <h2>Netgear</h2>
+        <ol>
+          <li>Browser → <b>routerlogin.net</b>.</li>
+          <li>Login (admin/password).</li>
+          <li>Wireless Settings öffnen.</li>
+          <li>Band: Nur 2.4 GHz aktivieren → Apply.</li>
+        </ol>
+      `,
+      asus: `
+        <h2>ASUS Router</h2>
+        <ol>
+          <li>Browser → <b>router.asus.com</b> oder <b>192.168.1.1</b>.</li>
+          <li>Einloggen → Wireless → Professional.</li>
+          <li>„Enable Radio“ nur bei 2.4 GHz aktivieren.</li>
+        </ol>
+      `,
+      huawei: `
+        <h2>Huawei / Honor Router</h2>
+        <ol>
+          <li>Browser → <b>192.168.8.1</b>.</li>
+          <li>Einloggen → WLAN-Einstellungen.</li>
+          <li>5 GHz deaktivieren oder getrennte SSID für 2.4 GHz erstellen.</li>
+        </ol>
+      `,
+      o2: `
+        <h2>O₂ HomeBox</h2>
+        <ol>
+          <li>Browser → <b>o2.box</b>.</li>
+          <li>Einloggen mit Gerätepasswort.</li>
+          <li>Menü WLAN → Kanäle / Frequenzen.</li>
+          <li>5 GHz deaktivieren.</li>
+        </ol>
+      `,
+      dlink: `
+        <h2>D-Link</h2>
+        <ol>
+          <li>Browser → <b>192.168.0.1</b>.</li>
+          <li>Login (admin / leer oder laut Aufkleber).</li>
+          <li>Wireless Settings → Advanced.</li>
+          <li>5 GHz deaktivieren oder 2.4 GHz aktivieren.</li>
+        </ol>
+      `,
+      zte: `
+        <h2>ZTE Router</h2>
+        <ol>
+          <li>Browser → <b>192.168.1.1</b>.</li>
+          <li>Anmelden → WLAN → Erweitert.</li>
+          <li>5 GHz ausschalten.</li>
+        </ol>
+      `,
+      andere: `
+        <h2>Allgemeine Methode</h2>
+        <ol>
+          <li>Suche die IP-Adresse deines Routers:
+            <ul>
+              <li><b>iPhone:</b> WLAN → (i) → Router-Adresse</li>
+              <li><b>Android:</b> WLAN → Netzwerkdetails → Gateway</li>
+            </ul>
+          </li>
+          <li>Diese IP im Browser eingeben (nicht bei Google !).</li>
+          <li>Mit Passwort einloggen, Menü: WLAN oder Wireless Settings öffnen.</li>
+          <li>„5 GHz“ deaktivieren oder nur 2.4 GHz aktivieren.</li>
+          <li>Dann App öffnen → Drucker → WLAN auswählen → Passwort eingeben.</li>
+        </ol>
+      `
+    };
+
+    document.getElementById('weiter').addEventListener('click', () => {
+      const auswahl = document.getElementById('router').value;
+      const ausgabe = document.getElementById('anleitung');
+      const code = document.getElementById('code').value.trim();
+
+      if (!auswahl) {
+        ausgabe.innerHTML = "<p>Bitte wähle zuerst einen Router aus.</p>";
+      } else {
+        ausgabe.innerHTML = routerTexte[auswahl] || "<p>Anleitung nicht gefunden.</p>";
+        if (code) {
+          ausgabe.innerHTML += `<p><b>Tipp:</b> Der Router-Code (${code}) steht meist auf der Unterseite.</p>`;
+        }
+      }
+      ausgabe.style.display = "block";
+      window.scrollTo({ top: ausgabe.offsetTop, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
