@@ -130,35 +130,6 @@
       padding-left: 18px;
     }
 
-    .quick-links {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-      margin: 24px 0 10px;
-    }
-
-    .quick-card {
-      background: linear-gradient(180deg, #ffffff, #f9fcff);
-      border: 2px solid var(--line);
-      border-radius: 22px;
-      padding: 18px;
-      text-decoration: none;
-      color: inherit;
-      box-shadow: 0 8px 22px rgba(78, 195, 255, 0.08);
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .quick-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 28px rgba(78, 195, 255, 0.16);
-    }
-
-    .quick-card strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 1rem;
-    }
-
     .tabs-wrap {
       position: sticky;
       top: 0;
@@ -166,7 +137,7 @@
       background: rgba(245, 251, 255, 0.94);
       backdrop-filter: blur(8px);
       padding: 14px 0 10px;
-      margin-top: 8px;
+      margin-top: 18px;
     }
 
     .tabs {
@@ -351,7 +322,8 @@
       font-size: 1.02rem;
     }
 
-    .router-select {
+    .router-select,
+    .ip-input {
       width: 100%;
       padding: 14px 16px;
       border: 2px solid var(--line);
@@ -360,7 +332,26 @@
       color: var(--text);
       font-size: 1rem;
       margin-top: 12px;
-      margin-bottom: 18px;
+    }
+
+    .ip-input-wrap {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      margin-top: 12px;
+      align-items: center;
+    }
+
+    .open-ip-btn {
+      border: none;
+      border-radius: 16px;
+      padding: 14px 18px;
+      background: linear-gradient(135deg, var(--primary), #6fd3ff);
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      min-height: 50px;
+      box-shadow: 0 10px 20px rgba(78, 195, 255, 0.28);
     }
 
     .router-guide {
@@ -398,7 +389,6 @@
 
     @media (max-width: 900px) {
       .hero-grid,
-      .quick-links,
       .info-grid,
       .step-grid,
       .help-grid,
@@ -465,27 +455,30 @@
         border-radius: 14px;
       }
 
-      .quick-card {
-        padding: 16px;
-      }
-
       .hero-box ul,
       .mini-list,
       .step ul {
         padding-left: 18px;
+      }
+
+      .ip-input-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .open-ip-btn {
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
   <header class="container">
-<div class="hero">
+    <div class="hero">
+      <div style="text-align:center; margin-bottom:20px;">
+        <img src="/Anleitung-Q15-KI-cube/logo.png" alt="Kiddotronic Logo" style="max-width:220px; width:100%; height:auto;">
+      </div>
 
-  <div style="text-align:center; margin-bottom:20px;">
-<img src="/Anleitung-Q15-KI-cube/logo.png" alt="Kiddotronic Logo" style="max-width:220px; width:100%; height:auto;">
-  </div>
-
-  <div class="hero-grid">
+      <div class="hero-grid">
         <div>
           <span class="badge">Gebrauchsanleitung</span>
           <h1>Q15 Mini Printer mit AI</h1>
@@ -500,38 +493,11 @@
             <li>Schritt-für-Schritt Hilfe in 2 Methoden</li>
             <li>Wichtige Akku- und Sicherheitshinweise</li>
             <li>Verschiedene Router-Anleitungen</li>
-            <li>Eigener Reiter für die Entsorgung</li>
-            <li>Eigener Reiter für die offizielle Anleitung</li>
+            <li>Offizielle Anleitung aus dem Heft</li>
+            <li>Hinweise zur Entsorgung</li>
           </ul>
         </div>
       </div>
-    </div>
-
-    <div class="quick-links">
-      <a class="quick-card" href="#" onclick="openTab('video'); return false;">
-        <strong>🎬 Video Anleitung</strong>
-        <span>App installieren & Drucker verbinden</span>
-      </a>
-      <a class="quick-card" href="#" onclick="openTab('inbetriebnahme'); return false;">
-        <strong>🌟 Inbetriebnahme</strong>
-        <span>Drucker schnell und richtig verbinden</span>
-      </a>
-      <a class="quick-card" href="#" onclick="openTab('hilfe'); return false;">
-        <strong>🛜 WLAN-Hilfe</strong>
-        <span>2,4 GHz und Router richtig einstellen</span>
-      </a>
-      <a class="quick-card" href="#" onclick="openTab('akku'); return false;">
-        <strong>🔋 Akku</strong>
-        <span>Sicher laden, lagern und verwenden</span>
-      </a>
-      <a class="quick-card" href="#" onclick="openTab('offiziell'); return false;">
-        <strong>📘 Offizielle Anleitung</strong>
-        <span>Original-Hinweise aus dem Heft</span>
-      </a>
-      <a class="quick-card" href="#" onclick="openTab('entsorgung'); return false;">
-        <strong>🚮 Entsorgung</strong>
-        <span>Lithium-Akku korrekt entsorgen</span>
-      </a>
     </div>
   </header>
 
@@ -711,6 +677,20 @@
             <li>Falsches WLAN-Passwort wurde eingegeben</li>
             <li>Zu großer Abstand zwischen Drucker und Router</li>
           </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Direkt zur Router-Seite</h3>
+        <p>Geben Sie hier die IP-Adresse Ihres Routers ein. Sie finden diese oft auf dem Router selbst oder in den WLAN-Details Ihres Handys. Nach Eingabe können Sie mit Enter oder per Klick direkt zur Router-Seite wechseln.</p>
+
+        <div class="ip-input-wrap">
+          <input class="ip-input" id="routerIpInput" type="text" inputmode="url" placeholder="z. B. 192.168.0.1 oder fritz.box">
+          <button class="open-ip-btn" id="openRouterIpBtn">Router öffnen</button>
+        </div>
+
+        <div class="highlight">
+          <strong>Hinweis:</strong> Die Router-Seite öffnet sich nur, wenn Ihr Gerät mit dem gleichen WLAN verbunden ist wie der Router.
         </div>
       </div>
 
@@ -970,6 +950,37 @@
         if (selected) {
           const target = document.getElementById('guide-' + selected);
           if (target) target.classList.add('active');
+        }
+      });
+    }
+
+    const routerIpInput = document.getElementById('routerIpInput');
+    const openRouterIpBtn = document.getElementById('openRouterIpBtn');
+
+    function openRouterPage() {
+      if (!routerIpInput) return;
+      let value = routerIpInput.value.trim();
+      if (!value) return;
+
+      if (
+        !value.startsWith('http://') &&
+        !value.startsWith('https://')
+      ) {
+        value = 'http://' + value;
+      }
+
+      window.location.href = value;
+    }
+
+    if (openRouterIpBtn) {
+      openRouterIpBtn.addEventListener('click', openRouterPage);
+    }
+
+    if (routerIpInput) {
+      routerIpInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          openRouterPage();
         }
       });
     }
