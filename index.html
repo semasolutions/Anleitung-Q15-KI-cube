@@ -34,7 +34,7 @@
       word-break: break-word;
     }
 
-    img, iframe {
+    img, iframe, svg {
       max-width: 100%;
       height: auto;
     }
@@ -304,10 +304,6 @@
     .mini-list li + li { margin-top: 8px; }
 
     .support-box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
       background: linear-gradient(135deg, #eef8ff, #ffffff);
       border: 2px solid var(--line);
       border-radius: 24px;
@@ -315,11 +311,64 @@
       margin-top: 20px;
     }
 
-    .support-box a {
+    .support-intro {
+      margin-bottom: 18px;
+    }
+
+    .support-intro a {
       color: #ff9f1c;
       font-weight: bold;
       text-decoration: none;
-      font-size: 1.02rem;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .contact-form label {
+      font-weight: bold;
+      color: #345b74;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      color: var(--text);
+      font-size: 1rem;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .contact-form textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      border: none;
+      border-radius: 16px;
+      padding: 14px 18px;
+      background: linear-gradient(135deg, var(--primary), #6fd3ff);
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      min-height: 50px;
+      box-shadow: 0 10px 20px rgba(78, 195, 255, 0.28);
+      justify-self: start;
     }
 
     .router-select,
@@ -378,6 +427,24 @@
       display: block;
     }
 
+    .symbol-note {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .bin-symbol {
+      width: 54px;
+      min-width: 54px;
+      height: 54px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.55);
+      border-radius: 14px;
+      padding: 6px;
+    }
+
     footer {
       max-width: 1180px;
       margin: 24px auto 40px;
@@ -392,7 +459,8 @@
       .info-grid,
       .step-grid,
       .help-grid,
-      .official-images {
+      .official-images,
+      .form-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -440,11 +508,6 @@
         font-size: 0.95rem;
       }
 
-      .support-box {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
       .step {
         grid-template-columns: 1fr;
       }
@@ -465,8 +528,14 @@
         grid-template-columns: 1fr;
       }
 
-      .open-ip-btn {
+      .open-ip-btn,
+      .submit-btn {
         width: 100%;
+        justify-self: stretch;
+      }
+
+      .symbol-note {
+        align-items: flex-start;
       }
     }
   </style>
@@ -483,7 +552,7 @@
           <span class="badge">Gebrauchsanleitung</span>
           <h1>Q15 Mini Printer mit AI</h1>
           <p>
-            Willkommen zur liebevoll gestalteten Online-Anleitung für den Q15 Mini Printer mit AI. Hier finden Sie alles Wichtige zur Inbetriebnahme, WLAN-Verbindung, zum sicheren Umgang mit dem Akku und zur richtigen Entsorgung – einfach, freundlich und übersichtlich erklärt.
+            Diese Anleitung hilft dabei, den Q15 Mini Printer mit AI richtig in Betrieb zu nehmen. Sie unterstützt besonders bei der WLAN-Einrichtung und bei der Umstellung von 5 GHz auf 2,4 GHz, da dies für viele Konsumenten nicht immer einfach ist.
           </p>
         </div>
         <div class="hero-box">
@@ -493,7 +562,7 @@
             <li>Schritt-für-Schritt Hilfe in 2 Methoden</li>
             <li>Wichtige Akku- und Sicherheitshinweise</li>
             <li>Verschiedene Router-Anleitungen</li>
-            <li>Offizielle Anleitung aus dem Heft</li>
+            <li>Wichtige erste Schritte bei der Installation des Druckers</li>
             <li>Hinweise zur Entsorgung</li>
           </ul>
         </div>
@@ -509,7 +578,7 @@
         <button class="tab-btn" data-tab="inbetriebnahme">Inbetriebnahme</button>
         <button class="tab-btn" data-tab="hilfe">WLAN-Hilfe</button>
         <button class="tab-btn" data-tab="akku">Akku & Sicherheit</button>
-        <button class="tab-btn" data-tab="offiziell">Offizielle Anleitung</button>
+        <button class="tab-btn" data-tab="offiziell">Erste Schritte</button>
         <button class="tab-btn" data-tab="entsorgung">Entsorgung</button>
         <button class="tab-btn" data-tab="kontakt">Kontakt</button>
       </nav>
@@ -522,7 +591,7 @@
       <div class="card">
         <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.1); background:#eaf6ff;">
           <iframe 
-            src="[youtube-nocookie.com](https://www.youtube-nocookie.com/embed/ypgsz8aO7eE?rel=0)"
+            src="https://www.youtube-nocookie.com/embed/ypgsz8aO7eE?rel=0"
             title="Video Anleitung zur App-Installation und Drucker-Verbindung"
             frameborder="0"
             referrerpolicy="strict-origin-when-cross-origin"
@@ -534,7 +603,7 @@
         <div class="highlight" style="margin-top:18px;">
           Falls das Video in Ihrem Browser nicht angezeigt wird, öffnen Sie es bitte direkt auf YouTube:
           <br><br>
-          <a href="[youtube.com](https://www.youtube.com/watch?v=ypgsz8aO7eE)" target="_blank" rel="noopener noreferrer" style="color:#2a6f97; font-weight:bold; text-decoration:none;">Video auf YouTube öffnen</a>
+          <a href="https://www.youtube.com/watch?v=ypgsz8aO7eE" target="_blank" rel="noopener noreferrer" style="color:#2a6f97; font-weight:bold; text-decoration:none;">Video auf YouTube öffnen</a>
         </div>
       </div>
     </section>
@@ -542,7 +611,7 @@
     <section class="panel" id="uebersicht">
       <h2>Willkommen</h2>
       <p class="lead">
-        Diese Anleitung ist besonders übersichtlich aufgebaut und hilft dabei, den Q15 Mini Printer mit AI schnell und sicher startklar zu machen.
+        Diese Anleitung dient als zusätzliche Hilfestellung, um den Kiddotronic KI Miniprinter zu installieren. Insbesondere unterstützt sie bei der Umstellung von 5 GHz auf 2,4 GHz, wie es bei SmartHomes häufig notwendig ist.
       </p>
 
       <div class="info-grid">
@@ -817,9 +886,9 @@
     </section>
 
     <section class="panel" id="offiziell">
-      <h2>Offizielle Anleitung</h2>
+      <h2>Erste Schritte</h2>
       <p class="lead">
-        Hier finden Sie die Hinweise aus der beiliegenden Original-Anleitung zusätzlich in übersichtlicher Form.
+        Hier werden die wichtigen ersten Schritte aus der mitgelieferten Anleitung nochmals übersichtlich dargestellt, damit die Installation des Druckers leichter gelingt.
       </p>
 
       <div class="card">
@@ -827,12 +896,12 @@
         <ul class="mini-list">
           <li>Android: Suchen Sie im App-Markt oder bei Google Play nach <strong>Fun Print</strong>.</li>
           <li>iPhone: Suchen Sie im App Store nach <strong>Fun Print</strong>.</li>
-          <li>Verwenden Sie bei Bedarf den QR-Code aus der Originalanleitung.</li>
+          <li>Verwenden Sie bei Bedarf den QR-Code aus der mitgelieferten Anleitung.</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3>2. Verbindungsart</h3>
+        <h3>2. Gerät mit dem WLAN verbinden</h3>
         <ul class="mini-list">
           <li>Beim ersten Gebrauch muss das Gerät mit dem Netzwerk verbunden werden.</li>
           <li>Auf der Seite erscheint zunächst <strong>Connecting</strong>.</li>
@@ -840,29 +909,29 @@
           <li>Scannen Sie den QR-Code mit Ihrem Handy, um zur Netzwerkseite zu gelangen.</li>
           <li>Geben Sie den Namen des <strong>2,4-GHz-WLANs</strong> und das Passwort ein.</li>
           <li>Klicken Sie auf den ersten roten Block, um das akustische Signal zu erzeugen.</li>
-          <li>Halten Sie das Handy mit aktivem Ton in die Nähe des Geräts, um die Netzwerkverbindung zu aktivieren.</li>
+          <li>Halten Sie das Handy mit aktiviertem Ton in die Nähe des Geräts, um die Netzwerkverbindung zu starten.</li>
           <li>Sobald auf der Geräteseite <strong>Press to talk</strong> angezeigt wird, können Sie die Taste drücken.</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3>3. Inhalte der Erstellung</h3>
+        <h3>3. AI-Funktion nutzen</h3>
         <ul class="mini-list">
           <li>Drücken Sie die <strong>AI-Taste</strong>, um zu sprechen und Inhalte zu erstellen.</li>
           <li>Nach erfolgreicher Einrichtung des Netzwerks erscheint <strong>Press to talk</strong>.</li>
           <li>Halten Sie die AI-Schaltfläche am Gerät gedrückt, um die Erstellungsfunktion zu nutzen.</li>
-          <li>Beispiel: „Ein Bild drucken, das einen kleinen Hund im Feld rennt.“</li>
+          <li>Beispiel: „Ein Bild drucken, das einen kleinen Hund im Feld zeigt.“</li>
           <li>Halten Sie die Taste gedrückt, sprechen Sie den Befehl und lassen Sie sie wieder los.</li>
         </ul>
       </div>
 
       <div class="warning">
-        <strong>Hinweis aus der Originalanleitung:</strong> 5GWi‑Fi wird nicht unterstützt. Für die Einrichtung muss ein <strong>2,4 GHz WLAN</strong> verwendet werden.
+        <strong>Wichtig für die Einrichtung:</strong> 5GWi‑Fi wird nicht unterstützt. Für die Installation muss ein <strong>2,4 GHz WLAN</strong> verwendet werden.
       </div>
 
       <div class="official-images">
-        <img src="/Anleitung-Q15-KI-cube/offizielle-anleitung-1.jpg" alt="Offizielle Anleitung Seite 1">
-        <img src="/Anleitung-Q15-KI-cube/offizielle-anleitung-2.jpg" alt="Offizielle Anleitung Seite 2">
+        <img src="/Anleitung-Q15-KI-cube/offizielle-anleitung-1.jpg" alt="Mitgelieferte Anleitung Seite 1">
+        <img src="/Anleitung-Q15-KI-cube/offizielle-anleitung-2.jpg" alt="Mitgelieferte Anleitung Seite 2">
       </div>
     </section>
 
@@ -891,8 +960,19 @@
         </ul>
       </div>
 
-      <div class="highlight">
-        Das Symbol der durchgestrichenen Mülltonne weist darauf hin, dass Batterien und Akkus getrennt gesammelt werden müssen.
+      <div class="highlight symbol-note">
+        <span class="bin-symbol" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="42" height="42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="23" y="20" width="18" height="28" rx="2" stroke="#2a6f97" stroke-width="3"/>
+            <path d="M20 20H44" stroke="#2a6f97" stroke-width="3" stroke-linecap="round"/>
+            <path d="M26 16H38" stroke="#2a6f97" stroke-width="3" stroke-linecap="round"/>
+            <path d="M28 26V42" stroke="#2a6f97" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M36 26V42" stroke="#2a6f97" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M22 50H42" stroke="#2a6f97" stroke-width="3" stroke-linecap="round"/>
+            <path d="M16 12L48 54" stroke="#ff7a59" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span>Das Symbol der durchgestrichenen Mülltonne weist darauf hin, dass Batterien und Akkus getrennt gesammelt werden müssen.</span>
       </div>
     </section>
 
@@ -903,13 +983,45 @@
       </p>
 
       <div class="support-box">
-        <div>
+        <div class="support-intro">
           <h3 style="margin-top:0; margin-bottom:8px;">Support</h3>
-          <p style="margin:0;">Kontaktieren Sie uns bei Fragen zur Einrichtung, Nutzung oder Entsorgung.</p>
-        </div>
-        <div>
+          <p style="margin:0 0 8px;">Beschreiben Sie Ihr Problem direkt über das Formular. Beim Absenden wird eine E-Mail an den Support vorbereitet.</p>
           <a href="mailto:semasolutions@hotmail.com">semasolutions@hotmail.com</a>
         </div>
+
+        <form class="contact-form" id="supportForm">
+          <div class="form-grid">
+            <div>
+              <label for="customerName">Name</label>
+              <input type="text" id="customerName" name="customerName" placeholder="Ihr Name">
+            </div>
+            <div>
+              <label for="customerEmail">E-Mail</label>
+              <input type="email" id="customerEmail" name="customerEmail" placeholder="ihre@email.de">
+            </div>
+          </div>
+
+          <div>
+            <label for="problemType">Problem auswählen</label>
+            <select id="problemType" name="problemType" required>
+              <option value="">Bitte Problem auswählen</option>
+              <option value="WLAN-Verbindung funktioniert nicht">WLAN-Verbindung funktioniert nicht</option>
+              <option value="Umstellung von 5 GHz auf 2,4 GHz">Umstellung von 5 GHz auf 2,4 GHz</option>
+              <option value="App-Installation">App-Installation</option>
+              <option value="Drucker wird nicht gefunden">Drucker wird nicht gefunden</option>
+              <option value="Druckproblem">Druckproblem</option>
+              <option value="Akku oder Laden">Akku oder Laden</option>
+              <option value="Sonstiges Problem">Sonstiges Problem</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="problemDetails">Genaue Beschreibung des Problems</label>
+            <textarea id="problemDetails" name="problemDetails" placeholder="Bitte beschreiben Sie hier möglichst genau, wobei Sie Hilfe benötigen." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Absenden</button>
+        </form>
       </div>
     </section>
   </main>
@@ -962,10 +1074,7 @@
       let value = routerIpInput.value.trim();
       if (!value) return;
 
-      if (
-        !value.startsWith('http://') &&
-        !value.startsWith('https://')
-      ) {
+      if (!value.startsWith('http://') && !value.startsWith('https://')) {
         value = 'http://' + value;
       }
 
@@ -982,6 +1091,39 @@
           e.preventDefault();
           openRouterPage();
         }
+      });
+    }
+
+    const supportForm = document.getElementById('supportForm');
+
+    if (supportForm) {
+      supportForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('customerName').value.trim();
+        const email = document.getElementById('customerEmail').value.trim();
+        const problemType = document.getElementById('problemType').value.trim();
+        const details = document.getElementById('problemDetails').value.trim();
+
+        if (!problemType || !details) {
+          alert('Bitte wählen Sie ein Problem aus und beschreiben Sie es genauer.');
+          return;
+        }
+
+        const subject = `Supportanfrage Q15 Mini Printer - ${problemType}`;
+        const body = [
+          'Supportanfrage zum Kiddotronic KI Mini Printer',
+          '',
+          `Name: ${name || '-'}`,
+          `E-Mail: ${email || '-'}`,
+          `Problem: ${problemType}`,
+          '',
+          'Beschreibung:',
+          details
+        ].join('
+');
+
+        window.location.href = `mailto:semasolutions@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       });
     }
   </script>
