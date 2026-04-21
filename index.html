@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gebrauchsanleitung für den Kiddotronic Q15 Mini Printer mit AI inklusive WLAN-Hilfe, 2,4-GHz-Einrichtung, Sicherheit und Support." />
   <title>Kiddotronic KI Mini Printer – Gebrauchsanleitung</title>
   <style>
     :root {
@@ -13,11 +14,9 @@
       --line: #d6e8f5;
       --primary: #4ec3ff;
       --primary-soft: #e6f6ff;
-      --secondary: #ffb347;
-      --secondary-soft: #fff3e0;
-      --success-soft: #ecfff3;
       --warning-soft: #fff7e8;
       --danger-soft: #fff0f3;
+      --success-soft: #ecfff3;
       --shadow: 0 14px 35px rgba(78, 195, 255, 0.18);
       --radius: 24px;
     }
@@ -34,7 +33,7 @@
       word-break: break-word;
     }
 
-    img, iframe {
+    img, iframe, svg {
       max-width: 100%;
       height: auto;
     }
@@ -159,9 +158,11 @@
       min-height: 46px;
     }
 
-    .tab-btn:hover {
+    .tab-btn:hover,
+    .tab-btn:focus-visible {
       border-color: var(--primary);
       color: var(--primary);
+      outline: none;
     }
 
     .tab-btn.active {
@@ -181,7 +182,9 @@
       box-shadow: var(--shadow);
     }
 
-    .panel.active { display: block; }
+    .panel.active {
+      display: block;
+    }
 
     h2 {
       margin-top: 0;
@@ -218,36 +221,33 @@
       padding: 22px;
     }
 
-    .highlight {
-      background: var(--primary-soft);
-      border-left: 6px solid var(--primary);
+    .highlight,
+    .warning,
+    .danger,
+    .success {
       border-radius: 16px;
       padding: 16px 18px;
       margin: 18px 0;
+    }
+
+    .highlight {
+      background: var(--primary-soft);
+      border-left: 6px solid var(--primary);
     }
 
     .warning {
       background: var(--warning-soft);
       border-left: 6px solid #f7b955;
-      border-radius: 16px;
-      padding: 16px 18px;
-      margin: 18px 0;
     }
 
     .danger {
       background: var(--danger-soft);
       border-left: 6px solid #ff9f6e;
-      border-radius: 16px;
-      padding: 16px 18px;
-      margin: 18px 0;
     }
 
     .success {
       background: var(--success-soft);
       border-left: 6px solid #71d49c;
-      border-radius: 16px;
-      padding: 16px 18px;
-      margin: 18px 0;
     }
 
     .step-list {
@@ -301,13 +301,11 @@
       margin: 0;
     }
 
-    .mini-list li + li { margin-top: 8px; }
+    .mini-list li + li {
+      margin-top: 8px;
+    }
 
     .support-box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
       background: linear-gradient(135deg, #eef8ff, #ffffff);
       border: 2px solid var(--line);
       border-radius: 24px;
@@ -315,13 +313,38 @@
       margin-top: 20px;
     }
 
-    .support-box a {
+    .support-intro {
+      margin-bottom: 18px;
+    }
+
+    .support-intro a {
       color: #ff9f1c;
       font-weight: bold;
       text-decoration: none;
-      font-size: 1.02rem;
     }
 
+    .contact-form {
+      display: grid;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .contact-form label {
+      font-weight: bold;
+      color: #345b74;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea,
     .router-select,
     .ip-input {
       width: 100%;
@@ -331,17 +354,15 @@
       background: #fff;
       color: var(--text);
       font-size: 1rem;
-      margin-top: 12px;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    .ip-input-wrap {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 12px;
-      margin-top: 12px;
-      align-items: center;
+    .contact-form textarea {
+      min-height: 150px;
+      resize: vertical;
     }
 
+    .submit-btn,
     .open-ip-btn {
       border: none;
       border-radius: 16px;
@@ -352,6 +373,18 @@
       cursor: pointer;
       min-height: 50px;
       box-shadow: 0 10px 20px rgba(78, 195, 255, 0.28);
+    }
+
+    .submit-btn {
+      justify-self: start;
+    }
+
+    .ip-input-wrap {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      margin-top: 12px;
+      align-items: center;
     }
 
     .router-guide {
@@ -378,6 +411,30 @@
       display: block;
     }
 
+    .symbol-note {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .bin-symbol {
+      width: 54px;
+      min-width: 54px;
+      height: 54px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.55);
+      border-radius: 14px;
+      padding: 6px;
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
     footer {
       max-width: 1180px;
       margin: 24px auto 40px;
@@ -392,7 +449,8 @@
       .info-grid,
       .step-grid,
       .help-grid,
-      .official-images {
+      .official-images,
+      .form-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -440,11 +498,6 @@
         font-size: 0.95rem;
       }
 
-      .support-box {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
       .step {
         grid-template-columns: 1fr;
       }
@@ -465,8 +518,14 @@
         grid-template-columns: 1fr;
       }
 
-      .open-ip-btn {
+      .open-ip-btn,
+      .submit-btn {
         width: 100%;
+        justify-self: stretch;
+      }
+
+      .symbol-note {
+        align-items: flex-start;
       }
     }
   </style>
@@ -475,7 +534,7 @@
   <header class="container">
     <div class="hero">
       <div style="text-align:center; margin-bottom:20px;">
-        <img src="/Anleitung-Q15-KI-cube/logo.png" alt="Kiddotronic Logo" style="max-width:220px; width:100%; height:auto;">
+        <img src="logo.png" alt="Kiddotronic Logo" style="max-width:220px; width:100%; height:auto;">
       </div>
 
       <div class="hero-grid">
@@ -483,7 +542,7 @@
           <span class="badge">Gebrauchsanleitung</span>
           <h1>Q15 Mini Printer mit AI</h1>
           <p>
-            Willkommen zur liebevoll gestalteten Online-Anleitung für den Q15 Mini Printer mit AI. Hier finden Sie alles Wichtige zur Inbetriebnahme, WLAN-Verbindung, zum sicheren Umgang mit dem Akku und zur richtigen Entsorgung – einfach, freundlich und übersichtlich erklärt.
+            Diese Anleitung hilft dabei, den Q15 Mini Printer mit AI richtig in Betrieb zu nehmen. Sie unterstützt besonders bei der WLAN-Einrichtung und bei der Umstellung von 5 GHz auf 2,4 GHz, da dies für viele Konsumenten nicht immer einfach ist.
           </p>
         </div>
         <div class="hero-box">
@@ -493,7 +552,7 @@
             <li>Schritt-für-Schritt Hilfe in 2 Methoden</li>
             <li>Wichtige Akku- und Sicherheitshinweise</li>
             <li>Verschiedene Router-Anleitungen</li>
-            <li>Offizielle Anleitung aus dem Heft</li>
+            <li>Wichtige erste Schritte bei der Installation des Druckers</li>
             <li>Hinweise zur Entsorgung</li>
           </ul>
         </div>
@@ -504,14 +563,14 @@
   <main class="container">
     <div class="tabs-wrap">
       <nav class="tabs" aria-label="Navigationsreiter">
-        <button class="tab-btn active" data-tab="video">Video Anleitung</button>
-        <button class="tab-btn" data-tab="uebersicht">Übersicht</button>
-        <button class="tab-btn" data-tab="inbetriebnahme">Inbetriebnahme</button>
-        <button class="tab-btn" data-tab="hilfe">WLAN-Hilfe</button>
-        <button class="tab-btn" data-tab="akku">Akku & Sicherheit</button>
-        <button class="tab-btn" data-tab="offiziell">Offizielle Anleitung</button>
-        <button class="tab-btn" data-tab="entsorgung">Entsorgung</button>
-        <button class="tab-btn" data-tab="kontakt">Kontakt</button>
+        <button class="tab-btn active" type="button" data-tab="video">Video Anleitung</button>
+        <button class="tab-btn" type="button" data-tab="uebersicht">Übersicht</button>
+        <button class="tab-btn" type="button" data-tab="inbetriebnahme">Inbetriebnahme</button>
+        <button class="tab-btn" type="button" data-tab="hilfe">WLAN-Hilfe</button>
+        <button class="tab-btn" type="button" data-tab="akku">Akku &amp; Sicherheit</button>
+        <button class="tab-btn" type="button" data-tab="offiziell">Erste Schritte</button>
+        <button class="tab-btn" type="button" data-tab="entsorgung">Entsorgung</button>
+        <button class="tab-btn" type="button" data-tab="kontakt">Kontakt</button>
       </nav>
     </div>
 
@@ -521,8 +580,8 @@
 
       <div class="card">
         <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.1); background:#eaf6ff;">
-          <iframe 
-            src="[youtube-nocookie.com](https://www.youtube-nocookie.com/embed/ypgsz8aO7eE?rel=0)"
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/ypgsz8aO7eE?rel=0"
             title="Video Anleitung zur App-Installation und Drucker-Verbindung"
             frameborder="0"
             referrerpolicy="strict-origin-when-cross-origin"
@@ -534,7 +593,7 @@
         <div class="highlight" style="margin-top:18px;">
           Falls das Video in Ihrem Browser nicht angezeigt wird, öffnen Sie es bitte direkt auf YouTube:
           <br><br>
-          <a href="[youtube.com](https://www.youtube.com/watch?v=ypgsz8aO7eE)" target="_blank" rel="noopener noreferrer" style="color:#2a6f97; font-weight:bold; text-decoration:none;">Video auf YouTube öffnen</a>
+          <a href="https://www.youtube.com/watch?v=ypgsz8aO7eE" target="_blank" rel="noopener noreferrer" style="color:#2a6f97; font-weight:bold; text-decoration:none;">Video auf YouTube öffnen</a>
         </div>
       </div>
     </section>
@@ -542,7 +601,7 @@
     <section class="panel" id="uebersicht">
       <h2>Willkommen</h2>
       <p class="lead">
-        Diese Anleitung ist besonders übersichtlich aufgebaut und hilft dabei, den Q15 Mini Printer mit AI schnell und sicher startklar zu machen.
+        Diese Anleitung dient als zusätzliche Hilfestellung, um den Kiddotronic KI Miniprinter zu installieren. Insbesondere unterstützt sie bei der Umstellung von 5 GHz auf 2,4 GHz, wie es bei SmartHomes häufig notwendig ist.
       </p>
 
       <div class="info-grid">
@@ -658,7 +717,7 @@
     </section>
 
     <section class="panel" id="hilfe">
-      <h2>WLAN-Hilfe & Fehlerbehebung</h2>
+      <h2>WLAN-Hilfe &amp; Fehlerbehebung</h2>
       <p class="lead">
         Hier finden Sie zusätzliche Hilfe, wenn die Verbindung nicht sofort klappt.
       </p>
@@ -682,11 +741,11 @@
 
       <div class="card">
         <h3>Direkt zur Router-Seite</h3>
-        <p>Geben Sie hier die IP-Adresse Ihres Routers ein. Sie finden diese oft auf dem Router selbst oder in den WLAN-Details Ihres Handys. Nach Eingabe können Sie mit Enter oder per Klick direkt zur Router-Seite wechseln.</p>
+        <p>Geben Sie hier die IP-Adresse Ihres Routers ein. Sie finden diese oft auf dem Router selbst oder in den WLAN-Details Ihres Handys. Nach Eingabe öffnet sich die Router-Seite in einem neuen Fenster oder Tab.</p>
 
         <div class="ip-input-wrap">
-          <input class="ip-input" id="routerIpInput" type="text" inputmode="url" placeholder="z. B. 192.168.0.1 oder fritz.box">
-          <button class="open-ip-btn" id="openRouterIpBtn">Router öffnen</button>
+          <input class="ip-input" id="routerIpInput" type="text" inputmode="url" placeholder="z. B. 192.168.0.1 oder fritz.box" autocomplete="off">
+          <button class="open-ip-btn" id="openRouterIpBtn" type="button">Router öffnen</button>
         </div>
 
         <div class="highlight">
@@ -713,71 +772,17 @@
           <option value="generic">Anderer Router / allgemein</option>
         </select>
 
-        <div class="router-guide" id="guide-fritzbox">
-          <div class="highlight">
-            <strong>AVM FRITZ!Box:</strong> Öffnen Sie <strong>fritz.box</strong> im Browser. Melden Sie sich mit dem Kennwort an, das auf der Unterseite des Routers steht. Gehen Sie zu <strong>WLAN → Funknetz</strong> oder zu den WLAN-Einstellungen und deaktivieren Sie 5 GHz bzw. nutzen Sie nur 2,4 GHz für die Einrichtung.
-          </div>
-        </div>
-
-        <div class="router-guide" id="guide-speedport">
-          <div class="highlight">
-            <strong>Telekom Speedport:</strong> Öffnen Sie <strong>speedport.ip</strong> oder <strong>192.168.2.1</strong>. Das Gerätepasswort steht meist auf der Rückseite. Öffnen Sie die WLAN-Einstellungen und deaktivieren Sie 5 GHz oder trennen Sie 2,4 GHz und 5 GHz.
-          </div>
-        </div>
-
-        <div class="router-guide" id="guide-vodafone">
-          <div class="highlight">
-            <strong>Vodafone Station:</strong> Öffnen Sie <strong>192.168.0.1</strong> im Browser. Melden Sie sich mit dem Router-Passwort an. Gehen Sie in die WLAN-Einstellungen und deaktivieren Sie 5 GHz vorübergehend.
-          </div>
-        </div>
-
-        <div class="router-guide" id="guide-tplink">
-          <div class="highlight">
-            <strong>TP-Link:</strong> Öffnen Sie <strong>192.168.0.1</strong>, <strong>192.168.1.1</strong> oder <strong>tplinkwifi.net</strong>. Melden Sie sich an und gehen Sie zu <strong>Wireless</strong> oder <strong>WLAN</strong>. Aktivieren Sie 2,4 GHz und deaktivieren Sie 5 GHz, falls nötig.
-          </div>
-        </div>
-
-        <div class="router-guide" id="guide-netgear">
-          <div class="highlight">
-            <strong>Netgear:</strong> Öffnen Sie <strong>routerlogin.net</strong> oder <strong>192.168.1.1</strong>. Gehen Sie zu den Funk- bzw. Wireless-Einstellungen. Aktivieren Sie nur 2,4 GHz für die Einrichtung.
-          </div>
-        </div>
-
-        <div class="router-guide" id="guide-asus">
-          <div class="highlight">
-            <strong>ASUS:</strong> Öffnen Sie <strong>router.asus.com</strong> oder <strong>192.168.1.1</strong>. Nach dem Login finden Sie die Einstellung meist unter <strong>Wireless</strong>. Schalten Sie 5 GHz aus oder richten Sie 2,4 GHz separat ein.
-          </div>
-        </div>
-
-        <div class="router-guide" id="guide-o2">
-          <div class="highlight">
-            <strong>O2 HomeBox:</strong> Öffnen Sie <strong>o2.box</strong> oder die auf dem Gerät angegebene IP-Adresse. Gehen Sie in das WLAN-Menü und verwenden Sie für die Drucker-Einrichtung nur 2,4 GHz.
-          </div>
-        </div>
-
-        <div class="router-guide" id="guide-huawei">
-          <div class="highlight">
-            <strong>Huawei:</strong> Öffnen Sie häufig <strong>192.168.3.1</strong> oder <strong>192.168.8.1</strong>. Suchen Sie den Bereich WLAN oder Wi‑Fi und deaktivieren Sie 5 GHz vorübergehend.
-          </div>
-        </div>
-
-        <div class="router-guide" id="guide-dlink">
-          <div class="highlight">
-            <strong>D-Link:</strong> Öffnen Sie <strong>192.168.0.1</strong> oder <strong>192.168.1.1</strong>. Melden Sie sich an und suchen Sie unter WLAN / Wireless die 2,4-GHz-Einstellungen.
-          </div>
-        </div>
-
-        <div class="router-guide" id="guide-zte">
-          <div class="highlight">
-            <strong>ZTE:</strong> Öffnen Sie <strong>192.168.1.1</strong> oder die auf dem Router angegebene Adresse. Aktivieren Sie 2,4 GHz und schalten Sie 5 GHz für die Einrichtung aus.
-          </div>
-        </div>
-
-        <div class="router-guide" id="guide-generic">
-          <div class="highlight">
-            <strong>Allgemeine Hilfe:</strong> Öffnen Sie die Router-Adresse direkt im Browser. Diese steht oft auf der Unterseite des Routers oder lässt sich am Handy unter WLAN-Details finden. Suchen Sie danach nach <strong>WLAN</strong>, <strong>Wi‑Fi</strong> oder <strong>Wireless</strong> und wählen Sie 2,4 GHz.
-          </div>
-        </div>
+        <div class="router-guide" id="guide-fritzbox"><div class="highlight"><strong>AVM FRITZ!Box:</strong> Öffnen Sie <strong>fritz.box</strong> im Browser. Melden Sie sich mit dem Kennwort an, das auf der Unterseite des Routers steht. Gehen Sie zu <strong>WLAN → Funknetz</strong> oder zu den WLAN-Einstellungen und deaktivieren Sie 5 GHz bzw. nutzen Sie nur 2,4 GHz für die Einrichtung.</div></div>
+        <div class="router-guide" id="guide-speedport"><div class="highlight"><strong>Telekom Speedport:</strong> Öffnen Sie <strong>speedport.ip</strong> oder <strong>192.168.2.1</strong>. Das Gerätepasswort steht meist auf der Rückseite. Öffnen Sie die WLAN-Einstellungen und deaktivieren Sie 5 GHz oder trennen Sie 2,4 GHz und 5 GHz.</div></div>
+        <div class="router-guide" id="guide-vodafone"><div class="highlight"><strong>Vodafone Station:</strong> Öffnen Sie <strong>192.168.0.1</strong> im Browser. Melden Sie sich mit dem Router-Passwort an. Gehen Sie in die WLAN-Einstellungen und deaktivieren Sie 5 GHz vorübergehend.</div></div>
+        <div class="router-guide" id="guide-tplink"><div class="highlight"><strong>TP-Link:</strong> Öffnen Sie <strong>192.168.0.1</strong>, <strong>192.168.1.1</strong> oder <strong>tplinkwifi.net</strong>. Melden Sie sich an und gehen Sie zu <strong>Wireless</strong> oder <strong>WLAN</strong>. Aktivieren Sie 2,4 GHz und deaktivieren Sie 5 GHz, falls nötig.</div></div>
+        <div class="router-guide" id="guide-netgear"><div class="highlight"><strong>Netgear:</strong> Öffnen Sie <strong>routerlogin.net</strong> oder <strong>192.168.1.1</strong>. Gehen Sie zu den Funk- bzw. Wireless-Einstellungen. Aktivieren Sie nur 2,4 GHz für die Einrichtung.</div></div>
+        <div class="router-guide" id="guide-asus"><div class="highlight"><strong>ASUS:</strong> Öffnen Sie <strong>router.asus.com</strong> oder <strong>192.168.1.1</strong>. Nach dem Login finden Sie die Einstellung meist unter <strong>Wireless</strong>. Schalten Sie 5 GHz aus oder richten Sie 2,4 GHz separat ein.</div></div>
+        <div class="router-guide" id="guide-o2"><div class="highlight"><strong>O2 HomeBox:</strong> Öffnen Sie <strong>o2.box</strong> oder die auf dem Gerät angegebene IP-Adresse. Gehen Sie in das WLAN-Menü und verwenden Sie für die Drucker-Einrichtung nur 2,4 GHz.</div></div>
+        <div class="router-guide" id="guide-huawei"><div class="highlight"><strong>Huawei:</strong> Öffnen Sie häufig <strong>192.168.3.1</strong> oder <strong>192.168.8.1</strong>. Suchen Sie den Bereich WLAN oder Wi‑Fi und deaktivieren Sie 5 GHz vorübergehend.</div></div>
+        <div class="router-guide" id="guide-dlink"><div class="highlight"><strong>D-Link:</strong> Öffnen Sie <strong>192.168.0.1</strong> oder <strong>192.168.1.1</strong>. Melden Sie sich an und suchen Sie unter WLAN / Wireless die 2,4-GHz-Einstellungen.</div></div>
+        <div class="router-guide" id="guide-zte"><div class="highlight"><strong>ZTE:</strong> Öffnen Sie <strong>192.168.1.1</strong> oder die auf dem Router angegebene Adresse. Aktivieren Sie 2,4 GHz und schalten Sie 5 GHz für die Einrichtung aus.</div></div>
+        <div class="router-guide" id="guide-generic"><div class="highlight"><strong>Allgemeine Hilfe:</strong> Öffnen Sie die Router-Adresse direkt im Browser. Diese steht oft auf der Unterseite des Routers oder lässt sich am Handy unter WLAN-Details finden. Suchen Sie danach nach <strong>WLAN</strong>, <strong>Wi‑Fi</strong> oder <strong>Wireless</strong> und wählen Sie 2,4 GHz.</div></div>
       </div>
 
       <div class="highlight">
@@ -786,7 +791,7 @@
     </section>
 
     <section class="panel" id="akku">
-      <h2>Akku & Sicherheit</h2>
+      <h2>Akku &amp; Sicherheit</h2>
       <p class="lead">
         Das Gerät enthält einen wiederaufladbaren Lithium-Akku. Bitte beachten Sie die folgenden Hinweise für einen sicheren Betrieb.
       </p>
@@ -817,9 +822,9 @@
     </section>
 
     <section class="panel" id="offiziell">
-      <h2>Offizielle Anleitung</h2>
+      <h2>Erste Schritte</h2>
       <p class="lead">
-        Hier finden Sie die Hinweise aus der beiliegenden Original-Anleitung zusätzlich in übersichtlicher Form.
+        Hier werden die wichtigen ersten Schritte aus der mitgelieferten Anleitung nochmals übersichtlich dargestellt, damit die Installation des Druckers leichter gelingt.
       </p>
 
       <div class="card">
@@ -827,12 +832,12 @@
         <ul class="mini-list">
           <li>Android: Suchen Sie im App-Markt oder bei Google Play nach <strong>Fun Print</strong>.</li>
           <li>iPhone: Suchen Sie im App Store nach <strong>Fun Print</strong>.</li>
-          <li>Verwenden Sie bei Bedarf den QR-Code aus der Originalanleitung.</li>
+          <li>Verwenden Sie bei Bedarf den QR-Code aus der mitgelieferten Anleitung.</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3>2. Verbindungsart</h3>
+        <h3>2. Gerät mit dem WLAN verbinden</h3>
         <ul class="mini-list">
           <li>Beim ersten Gebrauch muss das Gerät mit dem Netzwerk verbunden werden.</li>
           <li>Auf der Seite erscheint zunächst <strong>Connecting</strong>.</li>
@@ -840,29 +845,29 @@
           <li>Scannen Sie den QR-Code mit Ihrem Handy, um zur Netzwerkseite zu gelangen.</li>
           <li>Geben Sie den Namen des <strong>2,4-GHz-WLANs</strong> und das Passwort ein.</li>
           <li>Klicken Sie auf den ersten roten Block, um das akustische Signal zu erzeugen.</li>
-          <li>Halten Sie das Handy mit aktivem Ton in die Nähe des Geräts, um die Netzwerkverbindung zu aktivieren.</li>
+          <li>Halten Sie das Handy mit aktiviertem Ton in die Nähe des Geräts, um die Netzwerkverbindung zu starten.</li>
           <li>Sobald auf der Geräteseite <strong>Press to talk</strong> angezeigt wird, können Sie die Taste drücken.</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3>3. Inhalte der Erstellung</h3>
+        <h3>3. AI-Funktion nutzen</h3>
         <ul class="mini-list">
           <li>Drücken Sie die <strong>AI-Taste</strong>, um zu sprechen und Inhalte zu erstellen.</li>
           <li>Nach erfolgreicher Einrichtung des Netzwerks erscheint <strong>Press to talk</strong>.</li>
           <li>Halten Sie die AI-Schaltfläche am Gerät gedrückt, um die Erstellungsfunktion zu nutzen.</li>
-          <li>Beispiel: „Ein Bild drucken, das einen kleinen Hund im Feld rennt.“</li>
+          <li>Beispiel: „Ein Bild drucken, das einen kleinen Hund im Feld zeigt.“</li>
           <li>Halten Sie die Taste gedrückt, sprechen Sie den Befehl und lassen Sie sie wieder los.</li>
         </ul>
       </div>
 
       <div class="warning">
-        <strong>Hinweis aus der Originalanleitung:</strong> 5GWi‑Fi wird nicht unterstützt. Für die Einrichtung muss ein <strong>2,4 GHz WLAN</strong> verwendet werden.
+        <strong>Wichtig für die Einrichtung:</strong> 5GWi‑Fi wird nicht unterstützt. Für die Installation muss ein <strong>2,4 GHz WLAN</strong> verwendet werden.
       </div>
 
       <div class="official-images">
-        <img src="/Anleitung-Q15-KI-cube/offizielle-anleitung-1.jpg" alt="Offizielle Anleitung Seite 1">
-        <img src="/Anleitung-Q15-KI-cube/offizielle-anleitung-2.jpg" alt="Offizielle Anleitung Seite 2">
+        <img src="offizielle-anleitung-1.jpg" alt="Mitgelieferte Anleitung Seite 1">
+        <img src="offizielle-anleitung-2.jpg" alt="Mitgelieferte Anleitung Seite 2">
       </div>
     </section>
 
@@ -891,25 +896,70 @@
         </ul>
       </div>
 
-      <div class="highlight">
-        Das Symbol der durchgestrichenen Mülltonne weist darauf hin, dass Batterien und Akkus getrennt gesammelt werden müssen.
+      <div class="highlight symbol-note">
+        <span class="bin-symbol" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="42" height="42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="23" y="20" width="18" height="28" rx="2" stroke="#2a6f97" stroke-width="3"/>
+            <path d="M20 20H44" stroke="#2a6f97" stroke-width="3" stroke-linecap="round"/>
+            <path d="M26 16H38" stroke="#2a6f97" stroke-width="3" stroke-linecap="round"/>
+            <path d="M28 26V42" stroke="#2a6f97" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M36 26V42" stroke="#2a6f97" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M22 50H42" stroke="#2a6f97" stroke-width="3" stroke-linecap="round"/>
+            <path d="M16 12L48 54" stroke="#ff7a59" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span>Das Symbol der durchgestrichenen Mülltonne weist darauf hin, dass Batterien und Akkus getrennt gesammelt werden müssen.</span>
       </div>
     </section>
 
     <section class="panel" id="kontakt">
-      <h2>Kontakt & Hilfe</h2>
+      <h2>Kontakt &amp; Hilfe</h2>
       <p class="lead">
         Bei weiteren Fragen oder Problemen mit Ihrem Kiddotronic KI Mini Printer können Sie den Support kontaktieren.
       </p>
 
       <div class="support-box">
-        <div>
+        <div class="support-intro">
           <h3 style="margin-top:0; margin-bottom:8px;">Support</h3>
-          <p style="margin:0;">Kontaktieren Sie uns bei Fragen zur Einrichtung, Nutzung oder Entsorgung.</p>
-        </div>
-        <div>
+          <p style="margin:0 0 8px;">Beschreiben Sie Ihr Problem direkt über das Formular. Beim Absenden wird eine E-Mail an den Support vorbereitet.</p>
           <a href="mailto:semasolutions@hotmail.com">semasolutions@hotmail.com</a>
         </div>
+
+        <form class="contact-form" id="supportForm">
+          <div class="form-grid">
+            <div>
+              <label for="customerName">Name</label>
+              <input type="text" id="customerName" name="customerName" placeholder="Ihr Name">
+            </div>
+            <div>
+              <label for="customerEmail">E-Mail</label>
+              <input type="email" id="customerEmail" name="customerEmail" placeholder="ihre@email.de">
+            </div>
+          </div>
+
+          <div>
+            <label for="problemType">Problem auswählen</label>
+            <select id="problemType" name="problemType" required>
+              <option value="">Bitte Problem auswählen</option>
+              <option value="WLAN-Verbindung funktioniert nicht">WLAN-Verbindung funktioniert nicht</option>
+              <option value="Umstellung von 5 GHz auf 2,4 GHz">Umstellung von 5 GHz auf 2,4 GHz</option>
+              <option value="App-Installation">App-Installation</option>
+              <option value="Drucker wird nicht gefunden">Drucker wird nicht gefunden</option>
+              <option value="Druckproblem">Druckproblem</option>
+              <option value="Akku oder Laden">Akku oder Laden</option>
+              <option value="Sonstiges Problem">Sonstiges Problem</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="problemDetails">Genaue Beschreibung des Problems</label>
+            <textarea id="problemDetails" name="problemDetails" placeholder="Bitte beschreiben Sie hier möglichst genau, wobei Sie Hilfe benötigen." required></textarea>
+          </div>
+
+          <p class="form-note">Beim Klick auf „Absenden“ öffnet sich Ihr E-Mail-Programm mit einer vorbereiteten Nachricht an den Support.</p>
+
+          <button type="submit" class="submit-btn">Absenden</button>
+        </form>
       </div>
     </section>
   </main>
@@ -919,71 +969,128 @@
   </footer>
 
   <script>
-    const buttons = document.querySelectorAll('.tab-btn');
-    const panels = document.querySelectorAll('.panel');
+    (function () {
+      'use strict';
 
-    function openTab(target) {
-      buttons.forEach(btn => btn.classList.remove('active'));
-      panels.forEach(panel => panel.classList.remove('active'));
+      const buttons = document.querySelectorAll('.tab-btn');
+      const panels = document.querySelectorAll('.panel');
+      const routerSelect = document.getElementById('routerSelect');
+      const routerGuides = document.querySelectorAll('.router-guide');
+      const routerIpInput = document.getElementById('routerIpInput');
+      const openRouterIpBtn = document.getElementById('openRouterIpBtn');
+      const supportForm = document.getElementById('supportForm');
 
-      const button = document.querySelector(`[data-tab="${target}"]`);
-      const panel = document.getElementById(target);
+      function openTab(target, updateHash = true) {
+        if (!target) return;
 
-      if (button) button.classList.add('active');
-      if (panel) panel.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+        buttons.forEach((btn) => {
+          const isActive = btn.dataset.tab === target;
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-selected', String(isActive));
+        });
 
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        openTab(button.dataset.tab);
-      });
-    });
+        panels.forEach((panel) => {
+          const isActive = panel.id === target;
+          panel.classList.toggle('active', isActive);
+          panel.hidden = !isActive;
+        });
 
-    const routerSelect = document.getElementById('routerSelect');
-    const routerGuides = document.querySelectorAll('.router-guide');
-
-    if (routerSelect) {
-      routerSelect.addEventListener('change', function () {
-        routerGuides.forEach(guide => guide.classList.remove('active'));
-        const selected = this.value;
-        if (selected) {
-          const target = document.getElementById('guide-' + selected);
-          if (target) target.classList.add('active');
+        if (updateHash) {
+          history.replaceState(null, '', '#' + target);
         }
-      });
-    }
 
-    const routerIpInput = document.getElementById('routerIpInput');
-    const openRouterIpBtn = document.getElementById('openRouterIpBtn');
-
-    function openRouterPage() {
-      if (!routerIpInput) return;
-      let value = routerIpInput.value.trim();
-      if (!value) return;
-
-      if (
-        !value.startsWith('http://') &&
-        !value.startsWith('https://')
-      ) {
-        value = 'http://' + value;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
-      window.location.href = value;
-    }
-
-    if (openRouterIpBtn) {
-      openRouterIpBtn.addEventListener('click', openRouterPage);
-    }
-
-    if (routerIpInput) {
-      routerIpInput.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          openRouterPage();
-        }
+      buttons.forEach((button) => {
+        button.setAttribute('aria-selected', button.classList.contains('active') ? 'true' : 'false');
+        button.addEventListener('click', () => openTab(button.dataset.tab));
       });
-    }
+
+      const initialTab = window.location.hash ? window.location.hash.replace('#', '') : 'video';
+      if (document.getElementById(initialTab)) {
+        openTab(initialTab, false);
+      } else {
+        openTab('video', false);
+      }
+
+      if (routerSelect) {
+        routerSelect.addEventListener('change', function () {
+          routerGuides.forEach((guide) => guide.classList.remove('active'));
+          const selected = this.value;
+          if (!selected) return;
+          const target = document.getElementById('guide-' + selected);
+          if (target) target.classList.add('active');
+        });
+      }
+
+      function normalizeRouterUrl(value) {
+        let url = value.trim();
+        if (!url) return '';
+        if (!/^https?:\/\//i.test(url)) {
+          url = 'http://' + url;
+        }
+        return url;
+      }
+
+      function openRouterPage() {
+        if (!routerIpInput) return;
+        const value = normalizeRouterUrl(routerIpInput.value);
+        if (!value) {
+          alert('Bitte geben Sie eine Router-IP oder Router-Adresse ein.');
+          return;
+        }
+
+        const newWindow = window.open(value, '_blank', 'noopener,noreferrer');
+        if (!newWindow) {
+          alert('Das neue Fenster konnte nicht geöffnet werden. Bitte erlauben Sie Pop-ups für diese Seite.');
+        }
+      }
+
+      if (openRouterIpBtn) {
+        openRouterIpBtn.addEventListener('click', openRouterPage);
+      }
+
+      if (routerIpInput) {
+        routerIpInput.addEventListener('keydown', function (event) {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            openRouterPage();
+          }
+        });
+      }
+
+      if (supportForm) {
+        supportForm.addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          const name = document.getElementById('customerName')?.value.trim() || '';
+          const email = document.getElementById('customerEmail')?.value.trim() || '';
+          const problemType = document.getElementById('problemType')?.value.trim() || '';
+          const details = document.getElementById('problemDetails')?.value.trim() || '';
+
+          if (!problemType || !details) {
+            alert('Bitte wählen Sie ein Problem aus und beschreiben Sie es genauer.');
+            return;
+          }
+
+          const subject = 'Supportanfrage Q15 Mini Printer - ' + problemType;
+          const body = [
+            'Supportanfrage zum Kiddotronic KI Mini Printer',
+            '',
+            'Name: ' + (name || '-'),
+            'E-Mail: ' + (email || '-'),
+            'Problem: ' + problemType,
+            '',
+            'Beschreibung:',
+            details
+          ].join('\n');
+
+          const mailtoUrl = 'mailto:semasolutions@hotmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+          window.location.href = mailtoUrl;
+        });
+      }
+    })();
   </script>
 </body>
 </html>
