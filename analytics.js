@@ -78,7 +78,19 @@
     settings.hidden = true;
     document.body.appendChild(settings);
 
+    const clearAnalyticsCookies = () => {
+      document.cookie.split(";").forEach((entry) => {
+        const name = entry.split("=")[0].trim();
+        if (!/^_ga(?:_|$)/.test(name)) return;
+        const expires = "expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;SameSite=Lax";
+        document.cookie = name + "=;" + expires;
+        document.cookie = name + "=;" + expires + ";domain=kiddotronic.com";
+        document.cookie = name + "=;" + expires + ";domain=.kiddotronic.com";
+      });
+    };
+
     const setChoice = (choice) => {
+      const previousChoice = localStorage.getItem(STORAGE_KEY);
       localStorage.setItem(STORAGE_KEY, choice);
       banner.hidden = true;
       settings.hidden = false;
@@ -86,6 +98,8 @@
         loadAnalytics();
       } else {
         configureConsent("denied");
+        clearAnalyticsCookies();
+        if (previousChoice === "granted") location.reload();
       }
     };
 
