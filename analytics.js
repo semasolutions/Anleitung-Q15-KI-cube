@@ -3,16 +3,16 @@
   const STORAGE_KEY = "kiddotronic_analytics_consent";
 
   const styles = `
-    .cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:99999;max-width:760px;margin:auto;padding:20px;background:#fffaf2;color:#111;border:4px solid #111;border-radius:22px;box-shadow:8px 8px 0 #111;font-family:"Baloo 2",Arial,sans-serif}
+    .cookie-banner{position:fixed;left:16px;right:16px;top:50%;z-index:99999;max-width:760px;margin:auto;padding:24px;background:#fffaf2;color:#111;border:4px solid #111;border-radius:22px;box-shadow:0 0 0 100vmax rgba(17,17,17,.68),8px 8px 0 #111;font-family:"Baloo 2",Arial,sans-serif;transform:translateY(-50%)}
     .cookie-banner[hidden]{display:none}
-    .cookie-banner strong{display:block;margin-bottom:6px;font-size:1.3rem}
+    .cookie-banner strong{display:block;margin-bottom:8px;font-size:clamp(1.55rem,4vw,2.2rem);line-height:1}
     .cookie-banner p{margin:0 0 14px;line-height:1.4}
     .cookie-banner a{color:#111;font-weight:800}
-    .cookie-actions{display:flex;flex-wrap:wrap;gap:10px}
-    .cookie-actions button,.privacy-settings{min-height:44px;padding:9px 16px;border:3px solid #111;border-radius:999px;background:#ffec3d;color:#111;font:800 1rem "Baloo 2",Arial,sans-serif;cursor:pointer;box-shadow:3px 3px 0 #111}
-    .cookie-actions .reject{background:#fff}
+    .cookie-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .cookie-actions button,.privacy-settings{min-height:48px;padding:10px 16px;border:3px solid #111;border-radius:999px;background:#ffec3d;color:#111;font:800 1rem "Baloo 2",Arial,sans-serif;cursor:pointer;box-shadow:3px 3px 0 #111}
+    .cookie-actions .reject{background:#8cc8ea}
     .privacy-settings{position:fixed;left:12px;bottom:12px;z-index:9998;min-height:38px;padding:6px 12px;font-size:.85rem;background:#fff}
-    @media(max-width:560px){.cookie-banner{left:10px;right:10px;bottom:10px}.cookie-actions button{width:100%}}
+    @media(max-width:560px){.cookie-banner{left:10px;right:10px;padding:20px}.cookie-actions{grid-template-columns:1fr}.cookie-actions button{width:100%}}
   `;
 
   const addStyles = () => {
@@ -63,11 +63,11 @@
     banner.className = "cookie-banner";
     banner.setAttribute("aria-label", "Datenschutzeinstellungen");
     banner.innerHTML = `
-      <strong>Besucherstatistik</strong>
-      <p>Mit deiner Zustimmung verwenden wir Google Analytics, um Seitenaufrufe und Klicks auf Amazon zu messen. Ohne Zustimmung bleibt die Analyse deaktiviert. <a href="datenschutz.html">Mehr erfahren</a></p>
+      <strong>Wir verwenden Cookies</strong>
+      <p>Notwendige Speicherfunktionen sorgen dafür, dass deine Datenschutzauswahl erhalten bleibt. Mit deiner freiwilligen Einwilligung verwenden wir zusätzlich Google Analytics-Cookies, um Seitenaufrufe und Klicks auf Amazon zu messen und unser Angebot zu verbessern. Ohne Zustimmung bleibt die Analyse deaktiviert. Deine Auswahl kannst du jederzeit ändern. <a href="datenschutz.html">Mehr erfahren</a></p>
       <div class="cookie-actions">
-        <button type="button" class="accept">Analyse erlauben</button>
-        <button type="button" class="reject">Nur notwendige Funktionen</button>
+        <button type="button" class="accept">Analytics-Cookies erlauben</button>
+        <button type="button" class="reject">Optionale Cookies ablehnen</button>
       </div>`;
     document.body.appendChild(banner);
 
