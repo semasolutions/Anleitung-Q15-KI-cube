@@ -335,50 +335,107 @@
     }
 
     .amazon-offer {
-      width: min(100%, 610px);
-      padding: 20px 24px 24px;
-      background: var(--yellow);
-      border: 4px solid var(--ink);
-      border-radius: 26px;
-      box-shadow: var(--shadow);
+      width: min(100%, 640px);
+      position: relative;
+      isolation: isolate;
+      padding: 26px 24px 24px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255,106,0,.3) 0 4px, transparent 5px),
+        radial-gradient(circle at 88% 28%, rgba(180,255,50,.22) 0 4px, transparent 5px),
+        linear-gradient(145deg, #2d124d 0%, #13091f 58%, #050507 100%);
+      color: var(--white);
+      border: 5px solid var(--ink);
+      border-radius: 30px;
+      box-shadow: 10px 10px 0 var(--ink), 0 0 32px rgba(255,106,0,.5);
       transform: rotate(-1deg);
       text-align: center;
     }
 
+    .amazon-offer::before,
+    .amazon-offer::after {
+      position: absolute;
+      z-index: -1;
+      font-size: clamp(4rem, 10vw, 7rem);
+      filter: drop-shadow(4px 5px 0 #000);
+      opacity: .92;
+      pointer-events: none;
+    }
+
+    .amazon-offer::before {
+      content: "🎃";
+      left: -18px;
+      bottom: -22px;
+      transform: rotate(-13deg);
+    }
+
+    .amazon-offer::after {
+      content: "🦇";
+      right: 12px;
+      top: 10px;
+      transform: rotate(12deg);
+      animation: halloween-float 2.3s ease-in-out infinite alternate;
+    }
+
+    @keyframes halloween-float {
+      from { transform: translateY(-3px) rotate(7deg); }
+      to { transform: translateY(7px) rotate(16deg); }
+    }
+
     .amazon-offer-label {
-      display: block;
-      margin-bottom: 2px;
-      color: var(--red);
+      display: inline-block;
+      margin-bottom: 7px;
+      padding: 6px 15px;
+      color: #17100a;
+      background: #b7ff36;
+      border: 3px solid var(--ink);
+      border-radius: 999px;
+      box-shadow: 4px 4px 0 #000;
       font-size: clamp(1.05rem, 2vw, 1.35rem);
       font-weight: 800;
       letter-spacing: .08em;
       text-transform: uppercase;
+      transform: rotate(1.5deg);
     }
 
     .amazon-offer strong {
       display: block;
-      margin-bottom: 16px;
-      font-size: clamp(2.6rem, 5.5vw, 4.8rem);
-      line-height: .9;
+      margin: 9px 0 18px;
+      color: #ff7a00 !important;
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      line-height: .86;
+      text-shadow: 3px 3px 0 #000, 0 0 16px rgba(255,122,0,.7) !important;
+      -webkit-text-stroke: 1px #111 !important;
     }
 
     .amazon-offer .btn {
       width: 100%;
+      position: relative;
+      z-index: 2;
+      background: #ff6a00;
+      color: var(--white);
+      border-color: #000;
+      box-shadow: 7px 7px 0 #000;
+    }
+
+    .amazon-offer .btn:hover {
+      box-shadow: 3px 3px 0 #000;
     }
 
     .amazon-countdown {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 8px;
-      margin: 0 0 18px;
+      gap: 9px;
+      margin: 0 0 20px;
     }
 
     .countdown-part {
-      padding: 10px 6px;
-      background: var(--paper-light);
-      border: 3px solid var(--ink);
-      border-radius: 14px;
-      box-shadow: 3px 3px 0 var(--ink);
+      padding: 11px 6px;
+      color: #fff;
+      background: linear-gradient(180deg, #4d2378, #251037);
+      border: 3px solid #ff7a00;
+      border-radius: 15px;
+      box-shadow: 4px 4px 0 #000;
     }
 
     .countdown-part b,
@@ -387,12 +444,15 @@
     }
 
     .countdown-part b {
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      color: #b7ff36;
+      font-size: clamp(1.55rem, 3vw, 2.3rem);
       line-height: 1;
+      text-shadow: 2px 2px 0 #000;
     }
 
     .countdown-part span {
-      margin-top: 4px;
+      margin-top: 5px;
+      color: #fff;
       font-size: .75rem;
       font-weight: 800;
       text-transform: uppercase;
@@ -400,7 +460,8 @@
 
     .amazon-offer small {
       display: block;
-      margin-top: 13px;
+      margin-top: 14px;
+      color: #fff;
       font-size: .95rem;
       font-weight: 700;
     }
@@ -411,6 +472,10 @@
 
     .amazon-offer.is-expired .countdown-part {
       padding: 14px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .amazon-offer::after { animation: none; }
     }
 
     .steps-section, .benefits-section, .video-section, .approved-section {
@@ -789,17 +854,17 @@
         <h1 id="headline"><span>KI Sticker</span><span>Printer</span></h1>
         <p>Einfach eine Idee einsprechen, die KI erstellt ein Motiv und der Drucker gibt es als Sticker aus. So wird aus jedem Einfall sofort etwas zum Kleben, Sammeln, Ausmalen und Verschenken.</p>
         <div class="actions">
-          <div class="amazon-offer" aria-label="Amazon-Aktion: 20 Prozent Rabatt">
-            <span class="amazon-offer-label">Amazon-Aktion</span>
-            <strong id="amazon-offer-title">20 % Rabatt</strong>
-            <div class="amazon-countdown" id="amazon-countdown" data-end="2026-09-03T21:23:35+02:00" role="timer" aria-live="polite" aria-label="Verbleibende Aktionszeit">
-              <div class="countdown-part"><b data-days>02</b><span>Tage</span></div>
+          <div class="amazon-offer" aria-label="Halloween-Aktion: 20 Prozent Rabatt">
+            <span class="amazon-offer-label">👻 Halloween-Aktion</span>
+            <strong id="amazon-offer-title">20 % Spuk-Rabatt</strong>
+            <div class="amazon-countdown" id="amazon-countdown" data-end="2026-09-09T21:55:53+02:00" role="timer" aria-live="polite" aria-label="Verbleibende Aktionszeit">
+              <div class="countdown-part"><b data-days>07</b><span>Tage</span></div>
               <div class="countdown-part"><b data-hours>00</b><span>Std.</span></div>
               <div class="countdown-part"><b data-minutes>00</b><span>Min.</span></div>
               <div class="countdown-part"><b data-seconds>00</b><span>Sek.</span></div>
             </div>
-            <a class="btn product" id="amazon-offer-link" href="https://www.amazon.de/dp/B0GYMHN6Z5" target="_blank" rel="noopener noreferrer">Jetzt 20 % sichern</a>
-            <small>Aktionspreis und Verfügbarkeit auf Amazon prüfen.</small>
+            <a class="btn product" id="amazon-offer-link" href="https://www.amazon.de/dp/B0GYMHN6Z5" target="_blank" rel="noopener noreferrer">🎃 Halloween-Deal sichern</a>
+            <small>Nur für kurze Zeit – Aktionspreis und Verfügbarkeit auf Amazon prüfen.</small>
           </div>
         </div>
       </section>
